@@ -6,7 +6,7 @@ const WINDOWS: Record<string, { label: string; ms: number }> = {
   five_hour: { label: '5h', ms: 5 * 3_600_000 },
   seven_day: { label: '7d', ms: 7 * 86_400_000 },
 }
-const BAR_CELLS = 6
+const BAR_CELLS = 10
 const EIGHTHS = '▏▎▍▌▋▊▉'
 const GROUPS = '  │  '
 const MACHINE_ORIGINS = new Set([

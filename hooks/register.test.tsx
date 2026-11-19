@@ -80,17 +80,17 @@ const lineUnder = async ($: any, component: 'AssistantMessage' | 'UserMessage', 
 const START = { cwd: '/', surface: 'vscode', isInteractive: true } as const
 
 test('formats both limits with bars and pace markers, then the cost', () => {
-  expect(formatStatus(LIMITS, { usd: 2.4 }, NOW)).toBe('5h ██┊▌░░░ 42% · 5d █░┊░░░░ 18%  │  $2.40')
-  expect(formatStatus([{ kind: 'five_hour', percentUsed: 3 }], undefined, NOW)).toBe('5h ▏░░░░░ 3%')
+  expect(formatStatus(LIMITS, { usd: 2.4 }, NOW)).toBe('5h ███┊█▎░░░░░ 42% · 5d █▊░░┊░░░░░░ 18%  │  $2.40')
+  expect(formatStatus([{ kind: 'five_hour', percentUsed: 3 }], undefined, NOW)).toBe('5h ▎░░░░░░░░░ 3%')
   expect(formatStatus([], undefined, NOW)).toBe(undefined)
 })
 
 test('fills the bar in eighths and marks the pace', () => {
-  expect(usageBar(10, 0.6)).toBe('▋░░░┊░░')
-  expect(usageBar(42, 0.6)).toBe('██▌░┊░░')
-  expect(usageBar(75, 0.6)).toBe('████┊▌░')
-  expect(usageBar(97, 0.6)).toBe('████┊█▉')
-  expect(usageBar(130, 1.2)).toBe('██████┊')
+  expect(usageBar(10, 0.6)).toBe('█░░░░░┊░░░░')
+  expect(usageBar(42, 0.6)).toBe('████▎░┊░░░░')
+  expect(usageBar(75, 0.6)).toBe('██████┊█▌░░')
+  expect(usageBar(97, 0.6)).toBe('██████┊███▊')
+  expect(usageBar(130, 1.2)).toBe('██████████┊')
 })
 
 const at = (y: number, mo: number, d: number, h = 0, mi = 0) => new Date(y, mo - 1, d, h, mi).getTime()
@@ -104,7 +104,7 @@ test('a weekend reset paces the 7d limit over Mon 00:00 to Fri 17:00', () => {
   expect(week(at(2026, 11, 13, 17), WED_NOON)).toEqual({ label: '5d', elapsed: 60 / 113 })
   expect(week(at(2026, 3, 29, 12), at(2026, 3, 25, 12))).toEqual({ label: '5d', elapsed: 60 / 113 })
   expect(formatStatus([{ kind: 'seven_day', percentUsed: 30, resetsAt: new Date(at(2026, 11, 14, 10)).toISOString() }],
-    undefined, WED_NOON)).toBe('5d █▊░┊░░░ 30%')
+    undefined, WED_NOON)).toBe('5d ███░░┊░░░░░ 30%')
 })
 
 test('a midweek reset paces over its Mon–Fri time, the past and the coming weekend left out', () => {
@@ -113,7 +113,7 @@ test('a midweek reset paces over its Mon–Fri time, the past and the coming wee
   expect(week(at(2026, 11, 11, 18), at(2026, 11, 6, 16))).toEqual({ label: '5d', elapsed: 46 / 113 })
   expect(week(at(2026, 4, 3, 17, 30), at(2026, 3, 27, 16, 45))).toEqual({ label: '5d', elapsed: 0.25 / 113.5 })
   expect(formatStatus([{ kind: 'seven_day', percentUsed: 30, resetsAt: new Date(at(2026, 11, 4, 18)).toISOString() }],
-    undefined, WED_NOON)).toBe('5d █▊░░░░┊ 30%')
+    undefined, WED_NOON)).toBe('5d ███░░░░░░░┊ 30%')
 })
 
 test('a worked weekend shows the calendar 7d pace', () => {

@@ -9,7 +9,7 @@ A Claude Code mod for the status line:
 On weekdays (Mon 00:00 – Fri 17:00, local time) the 7d limit is shown as `5d` and paced over the working time in its window, weekends left out. On a worked weekend it shows `7d`, paced over the whole week.
 
 ```
-⏱ 1m12s  │  5h ██┊▌░░░ 42% · 5d █░┊░░░░ 18%  │  $2.40
+⏱ 1m12s  │  5h ███┊█▎░░░░░ 42% · 5d █▊░░┊░░░░░░ 18%  │  $2.40
 ```
 
 ## Install
