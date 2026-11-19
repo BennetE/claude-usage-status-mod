@@ -1,0 +1,7 @@
+{
+  "modules": ["./register.tsx"],
+  "hooks": {
+    "Stop": [{ "hooks": [{ "type": "command", "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/hooks/stop_snapshot.py\"" }] }],
+    "StopFailure": [{ "hooks": [{ "type": "command", "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/hooks/stop_snapshot.py\"" }] }]
+  }
+}

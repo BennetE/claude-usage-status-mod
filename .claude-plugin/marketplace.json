@@ -1,0 +1,6 @@
+{
+  "name": "claude-usage-status-mod",
+  "owner": { "name": "BennetE" },
+  "metadata": { "description": "Status line mod for Claude Code: request timer, plan limits with pace markers, session cost" },
+  "plugins": [{ "name": "usage-status", "source": "./" }]
+}

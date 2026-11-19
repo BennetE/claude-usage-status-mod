@@ -1,0 +1,6 @@
+{
+  "name": "usage-status",
+  "version": "0.4.0",
+  "description": "Status line with a live request timer, the 5h and 7d plan limits (paced over Mon–Fri as 5d on weekdays, over the whole week as 7d on a worked weekend) and the session cost; each finished request's duration under its last reply",
+  "types": "./types/index.d.ts"
+}
